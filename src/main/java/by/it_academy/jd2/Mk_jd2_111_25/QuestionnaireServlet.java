@@ -29,12 +29,17 @@ public class QuestionnaireServlet extends HttpServlet {
         String[] genres = req.getParameterValues("genre");
         String comment = req.getParameter("about");
 
-        if (singer != null && !singer.isBlank()){
+        if (singer == null || singer.isBlank() || genres == null || genres.length < 3 || genres.length > 5) {
+            try (PrintWriter out = resp.getWriter()) {
+                out.println("<html><head><title>Ошибка</title></head><body>");
+                out.println("<h2 style='color:red;'>Ошибка: необходимо выбрать исполнителя и от 3 до 5 поджанров.</h2>");
+                out.println("</body></html>");
+                return;
+            }
+        } else {
             singerVotes.computeIfAbsent(singer, k -> new AtomicInteger(0))
                     .incrementAndGet();
-        }
 
-        if (genres !=null) {
             for (String genre: genres){
                 if (genre != null && !genre.isBlank()){
                     genreVotes
@@ -42,14 +47,14 @@ public class QuestionnaireServlet extends HttpServlet {
                             .incrementAndGet();
                 }
             }
-        }
 
-        synchronized (comments) {
-            comments.append("<p><b>")
-                    .append(java.time.LocalDateTime.now()) // время
-                    .append(":</b> ")
-                    .append(escapeHtml(comment))
-                    .append("</p>\n");
+            synchronized (comments) {
+                comments.append("<p><b>")
+                        .append(java.time.LocalDateTime.now()) // время
+                        .append(":</b> ")
+                        .append(escapeHtml(comment == null ? "" : comment))
+                        .append("</p>\n");
+            }
         }
 
         try (PrintWriter out = resp.getWriter()) {

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Тег FORM</title>
+</head>
+<body>
+
+<form action="http://localhost:8080/java-Enterprise-DZ3-1.0-SNAPSHOT/vote" method="post">
+
+  <fieldset>
+    <legend><b>Выберите любимого исполнителя</b></legend>
+    <label><input type="radio" name="singer" value="Black Sabbath"> Black Sabbath</label><br>
+    <label><input type="radio" name="singer" value="Carpenter Brut"> Carpenter Brut</label><br>
+    <label><input type="radio" name="singer" value="Megadeth"> Megadeth</label><br>
+    <label><input type="radio" name="singer" value="Metallica"> Metallica</label><br>
+    <label><input type="radio" name="singer" value="Mick Gordon"> Mick Gordon</label><br>
+    <label><input type="radio" name="singer" value="Slipknot"> Slipknot</label><br>
+    <label><input type="radio" name="singer" value="Static-X"> Static-X</label><br>
+    <label><input type="radio" name="singer" value="Tool"> Tool</label><br>
+  </fieldset>
+
+  <br>
+
+  <fieldset>
+    <legend><b>Выберите 3–5 любимых поджанров</b></legend>
+    <label><input type="checkbox" name="genre" value="Alternative"> Alternative</label><br>
+    <label><input type="checkbox" name="genre" value="Doom"> Doom</label><br>
+    <label><input type="checkbox" name="genre" value="Groove"> Groove</label><br>
+    <label><input type="checkbox" name="genre" value="Heavy"> Heavy</label><br>
+    <label><input type="checkbox" name="genre" value="Industrial"> Industrial</label><br>
+    <label><input type="checkbox" name="genre" value="Nu"> Nu</label><br>
+    <label><input type="checkbox" name="genre" value="Progressive"> Progressive</label><br>
+    <label><input type="checkbox" name="genre" value="Thrash"> Thrash</label><br>
+  </fieldset>
+
+  <br>
+
+  <label for="about"><b>Расскажите о себе</b></label><br>
+  <textarea name="about" id="about" rows="5" cols="50"></textarea>
+
+  <p><input type="submit" value="Отправить"></p>
+
+</form>
+
+</body>
+</html>

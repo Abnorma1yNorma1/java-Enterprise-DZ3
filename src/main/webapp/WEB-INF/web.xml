@@ -12,5 +12,6 @@
         <servlet-name>QuestionnaireServlet</servlet-name>
         <url-pattern>/questionnaire/</url-pattern>
     </servlet-mapping>
+
     <display-name>java-Enterprise-DZ3</display-name>
 </web-app>

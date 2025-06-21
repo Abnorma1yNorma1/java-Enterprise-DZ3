@@ -62,7 +62,7 @@
     </div>
 
     <hr>
-    <p><a href="vote.jsp">Назад к форме</a></p>
+    <p><a href="vote_page.jsp">Назад к форме</a></p>
 </c:if>
 
 </body>

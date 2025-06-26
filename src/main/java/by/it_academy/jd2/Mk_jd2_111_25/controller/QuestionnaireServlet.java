@@ -3,7 +3,7 @@ package by.it_academy.jd2.Mk_jd2_111_25.controller;
 import by.it_academy.jd2.Mk_jd2_111_25.dto.VoteResult;
 import by.it_academy.jd2.Mk_jd2_111_25.service.VoteService;
 import by.it_academy.jd2.Mk_jd2_111_25.service.api.IVoteService;
-import by.it_academy.jd2.Mk_jd2_111_25.storage.VoteStorageRam;
+import by.it_academy.jd2.Mk_jd2_111_25.storage.VoteStorageLocalDB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/vote")
 public class QuestionnaireServlet extends HttpServlet {
-    private final IVoteService service = new VoteService(new VoteStorageRam());
+    private final IVoteService service = new VoteService(new VoteStorageLocalDB());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

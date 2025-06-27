@@ -9,7 +9,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class VoteStorageLocalDB implements IVoteStorage {
 
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/local_votes";
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+            DriverManager.registerDriver(new org.postgresql.Driver());
+        } catch (Exception e) {
+            throw new RuntimeException("PostgreSQL driver registration failed", e);
+        }
+    }
+
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/Questionnaire";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "postgres";
     private static final String DB_SSL = "false";
@@ -53,7 +62,6 @@ public class VoteStorageLocalDB implements IVoteStorage {
 
     @Override
     public void addGenreVote(String genre) {
-
         try (Connection conn = DriverManager.getConnection(DB_URL, getProperties())) {
             PreparedStatement select = conn.prepareStatement(
                 "SELECT votes FROM vote_app.genres WHERE name = ?");
